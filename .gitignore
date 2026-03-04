@@ -45,4 +45,5 @@ build/
 
 # don't track personal documentation
 *.md
+!GRAMMAR.md
 !README.md
