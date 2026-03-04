@@ -45,5 +45,7 @@ build/
 
 # don't track personal documentation
 *.md
+!YOUTRACK_TASKS.md
+!EXPLANATION.md
 !GRAMMAR.md
 !README.md
