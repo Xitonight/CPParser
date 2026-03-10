@@ -1,0 +1,4 @@
+CompileFlags:
+  Add:
+    - "-I${workspaceFolder}/include"
+    - "-std=c++23"
