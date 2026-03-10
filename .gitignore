@@ -1,5 +1,6 @@
-# Build directory
+# CMake/Make directories
 build/
+.cache/
 
 # Prerequisites
 *.d
