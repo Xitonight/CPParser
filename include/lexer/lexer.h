@@ -1,6 +1,5 @@
 #include <cstddef>
 #include <string>
-#include <vector>
 
 namespace lexer {
 
@@ -24,11 +23,20 @@ public:
   Token(TokenType type) : type_{type} {}
 };
 
-class tokenizer {
-  std::vector<Token> tokens_;
+class Lexer {
+  std::string source_;
+  std::size_t current_ = 0;
+  std::size_t line_ = 1;
+
+  bool isAtEnd() const;
+  char peek() const;
+  char advance();
+  bool match(char expected);
 
 public:
-  std::vector<Token> tokens() const { return tokens_; }
+  Lexer(std::string source) : source_{source} {};
+
+  Token nextToken();
 };
 
 } // namespace lexer

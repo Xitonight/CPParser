@@ -2,7 +2,7 @@
 #include <stdexcept>
 #include <string>
 
-namespace cp {
+namespace errors {
 
 class Error : public std::runtime_error {
   std::size_t line_;
@@ -15,9 +15,11 @@ class Error : public std::runtime_error {
   }
 
 public:
-  Error(const std::string &message) : std::runtime_error(message), line_(0), column_(0) {}
+  Error(const std::string &message)
+      : std::runtime_error(message), line_(0), column_(0) {}
   Error(std::size_t line, std::size_t column, const std::string &message)
-      : std::runtime_error(build_message(line, column, message)), line_(line), column_(column) {}
+      : std::runtime_error(build_message(line, column, message)), line_(line),
+        column_(column) {}
 
   virtual ~Error() = default;
 
@@ -42,4 +44,4 @@ public:
       : Error(line, column, message) {}
 };
 
-} // namespace cp
+} // namespace errors
