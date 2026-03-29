@@ -32,6 +32,7 @@ TokenTypeInfo tokenTypeInfo[] = {
 
     // Literals
     {"NUMBER", "number_literal"},
+    {"STRING", "string_literal"},
 
     {"END_OF_FILE", ""}};
 

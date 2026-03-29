@@ -56,6 +56,8 @@ Token Lexer::nextToken() {
     break;
   case '*':
     return createToken(TokenType::STAR);
+  case '"':
+    return handleStringToken();
   case '\0':
     column_--;
     return createToken(TokenType::END_OF_FILE);
@@ -93,6 +95,25 @@ Token Lexer::handleNumberToken() {
       advance();
   }
   return createToken(TokenType::NUMBER,
+                     source_.substr(start_, current_ - start_));
+}
+
+Token Lexer::handleStringToken() {
+  while (peek() != '"' && !isAtEnd()) {
+    if (peek() == '\n') {
+      line_++;
+      column_ = 1;
+    }
+    advance();
+  }
+
+  if (isAtEnd()) {
+    throwLexingError("Unterminated string.");
+  }
+
+  advance();
+
+  return createToken(TokenType::STRING,
                      source_.substr(start_, current_ - start_));
 }
 

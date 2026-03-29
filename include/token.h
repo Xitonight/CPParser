@@ -32,6 +32,7 @@ enum class TokenType {
 
   // Literals
   NUMBER,
+  STRING,
 
   END_OF_FILE
 };

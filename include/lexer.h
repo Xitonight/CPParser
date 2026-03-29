@@ -19,6 +19,7 @@ private:
   [[nodiscard]] bool match(char expected);
 
   [[nodiscard]] Token handleNumberToken();
+  [[nodiscard]] Token handleStringToken();
 
   [[nodiscard]] Token createToken(TokenType type,
                                   std::string_view lexeme) const;
