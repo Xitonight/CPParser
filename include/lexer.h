@@ -1,28 +1,8 @@
 #include <cstddef>
 #include <string>
+#include <token.h>
 
 namespace lexer {
-
-enum class TokenType {
-  Number,
-  Plus,
-  Minus,
-  Star,
-  Slash,
-  LParenthesis,
-  RParenthesis,
-  End
-};
-
-class Token {
-public:
-  Token(TokenType type) : type_{type} {}
-
-private:
-  TokenType type_;
-  std::string lexeme_;
-  std::size_t position_;
-};
 
 class Lexer {
 public:
