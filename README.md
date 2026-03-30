@@ -2,12 +2,6 @@
 
 A modern C++ (C++23) parser implementation demonstrating compiler theory and practice. This project builds a complete parser from scratch, starting with a lexer and progressing through expression parsing, statement parsing, and program analysis.
 
-## Current Status
-
-✅ **Phase 1 Complete**: Working lexer with comprehensive test coverage  
-🔨 **In Progress**: Expression parser  
-📋 **Planned**: Statement parser, AST, error recovery, semantic analysis
-
 ## Features
 
 ### Lexer (Implemented)
@@ -73,16 +67,16 @@ The project uses **Catch2** as the testing framework.
 
 ```bash
 cd build
-./tests                    # Run all tests
-./tests -s                 # Verbose output showing each assertion
+./tests                     # Run all tests
+./tests -s                  # Verbose output showing each assertion
 ctest                       # Run via CTest
-ctest -R "Lexer"          # Run specific test patterns
+ctest -R "Lexer"            # Run specific test patterns
 ctest --output-on-failure   # Show details of failing tests
 ```
 
 ### Test Coverage
 
-Currently includes **38 tests** covering:
+Currently includes **more than 30 tests** covering:
 - Single character tokens
 - Multi-character comparison operators
 - Arithmetic operators (`+`, `-`, `++`, `--`)
@@ -115,9 +109,6 @@ parser/
 │   └── README.md
 ├── build/            # Build artifacts (generated)
 ├── CMakeLists.txt    # CMake build configuration
-├── GRAMMAR.md        # Language grammar specification
-├── EXPLANATION.md    # Detailed parser theory
-└── YOUTRACK_TASKS.md # Project roadmap and tasks
 ```
 
 ## Usage
@@ -157,10 +148,6 @@ Token(type: RIGHT_CURLY_BRACKET, lexeme: }, line: 3, column: 1)
 Token(type: END_OF_FILE, lexeme: , line: 3, column: 2)
 ```
 
-## Roadmap
-
-See `YOUTRACK_TASKS.md` for a complete, detailed task breakdown.
-
 ### Upcoming Milestones
 
 1. **Expression Parser** - Parse arithmetic, logical, and assignment expressions with proper operator precedence
@@ -168,31 +155,6 @@ See `YOUTRACK_TASKS.md` for a complete, detailed task breakdown.
 3. **AST Implementation** - Build Abstract Syntax Tree from tokens
 4. **Error Recovery** - Continue parsing after syntax errors with helpful messages
 5. **Semantic Analysis** - Type checking and scope resolution
-
-### Supported Language Features (Planned)
-
-- ✅ Arithmetic expressions: `+`, `-`, `*`, `/`
-- ✅ Comparison operators: `==`, `!=`, `<`, `>`, `<=`, `>=`
-- ✅ Logical operators: `!`, `&&`, `||`
-- ✅ Variable declarations: `let x = 10;`
-- ✅ Control flow: `if`, `while`, `for`
-- ✅ Functions: declarations, calls, returns
-- ✅ String literals with escape sequences
-- ✅ Comments (single-line)
-
-## Learning Resources
-
-This project includes comprehensive educational materials:
-
-- **`EXPLANATION.md`** - Deep dive into parser theory, including:
-  - Context-Free Grammars and BNF/EBNF notation
-  - Top-down vs Bottom-up parsing strategies
-  - Recursive Descent parsers
-  - Operator precedence and associativity
-  - AST vs Parse Trees
-  - Error handling and recovery
-
-- **`GRAMMAR.md`** - Formal grammar specification for the language being parsed
 
 ## Design Philosophy
 
@@ -209,15 +171,4 @@ This is a learning project. To extend functionality:
 1. Add new tokens to `include/token.h`
 2. Implement lexer handling in `src/lexer.cpp`
 3. Add tests in `tests/lexer_tests.cpp`
-4. Update `GRAMMAR.md` if changing language syntax
-5. Follow the existing code style and patterns
-
-## License
-
-See `LICENSE` file for details.
-
-## Acknowledgments
-
-- **Catch2** - Testing framework used for the test suite
-- **Crafting Interpreters** by Robert Nystrom - Excellent resource on parser implementation
-- The "Dragon Book" (Compilers: Principles, Techniques, and Tools) - Classic compiler theory reference
+4. Follow the existing code style and patterns
