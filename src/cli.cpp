@@ -5,15 +5,22 @@
 
 namespace cli {
 
+const std::unordered_map<std::string_view, FlagType> FlagMap = {
+    {"-s", FlagType::SOURCE},   {"--source", FlagType::SOURCE},
+    {"-p", FlagType::PATH},     {"--path", FlagType::PATH},
+    {"--file", FlagType::PATH}, {"-h", FlagType::HELP},
+    {"--help", FlagType::HELP}};
+
 Options CliHelper::parse() {
   check();
-  if (std::string_view(argv_[1]) == "-s" ||
-      std::string_view(argv_[1]) == "--source") {
+  switch (FlagMap.at(argv_[1])) {
+  case cli::FlagType::SOURCE:
     return Options{argv_[2]};
-  } else if (std::string_view(argv_[1]) == "-p" ||
-             std::string_view(argv_[1]) == "--path" ||
-             std::string_view(argv_[1]) == "--file") {
+  case cli::FlagType::PATH:
     return Options{io::readFile(argv_[2])};
+  default:
+    showError("Unhandled flag.");
+    exit(1);
   }
   return Options{};
 }
@@ -26,11 +33,7 @@ void CliHelper::check() {
     hasError = true;
   }
 
-  if (argc_ >= 2 && std::string_view{argv_[1]} != "-s" &&
-      std::string_view{argv_[1]} != "--source" &&
-      std::string_view{argv_[1]} != "-p" &&
-      std::string_view{argv_[1]} != "--path" &&
-      std::string_view{argv_[1]} != "--file") {
+  if (argc_ >= 2 && !FlagMap.contains(argv_[1])) {
     showError("Invalid argument(s).");
     hasError = true;
   }
@@ -58,6 +61,7 @@ void CliHelper::showError(std::string_view msg) {
 
 void CliHelper::showUsage(std::ostream &out) {
   out << "Usage" << std::endl << std::endl;
+  out << "  parser [-h/--help]" << std::endl;
   out << "  parser [-s/--source] <source-string>" << std::endl;
   out << "  parser [-p/--path/--file] <path-to-source>" << std::endl;
 }
