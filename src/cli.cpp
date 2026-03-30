@@ -7,9 +7,12 @@ namespace cli {
 
 Options CliHelper::parse() {
   check();
-  if (std::string_view(argv_[1]) == "-s") {
+  if (std::string_view(argv_[1]) == "-s" ||
+      std::string_view(argv_[1]) == "--source") {
     return Options{argv_[2]};
-  } else if (std::string_view(argv_[1]) == "-p") {
+  } else if (std::string_view(argv_[1]) == "-p" ||
+             std::string_view(argv_[1]) == "--path" ||
+             std::string_view(argv_[1]) == "--file") {
     return Options{io::readFile(argv_[2])};
   }
   return Options{};
@@ -19,12 +22,15 @@ void CliHelper::check() {
   bool hasError = false;
 
   if (argc_ == 1) {
-    showError("Missing arguments.");
+    showError("No arguments passed.");
     hasError = true;
   }
 
   if (argc_ >= 2 && std::string_view{argv_[1]} != "-s" &&
-      std::string_view{argv_[1]} != "-p") {
+      std::string_view{argv_[1]} != "--source" &&
+      std::string_view{argv_[1]} != "-p" &&
+      std::string_view{argv_[1]} != "--path" &&
+      std::string_view{argv_[1]} != "--file") {
     showError("Invalid argument(s).");
     hasError = true;
   }
@@ -52,8 +58,8 @@ void CliHelper::showError(std::string_view msg) {
 
 void CliHelper::showUsage(std::ostream &out) {
   out << "Usage" << std::endl << std::endl;
-  out << "  parser -s <source-string>" << std::endl;
-  out << "  parser -p <path-to-source>" << std::endl;
+  out << "  parser [-s/--source] <source-string>" << std::endl;
+  out << "  parser [-p/--path/--file] <path-to-source>" << std::endl;
 }
 
 } // namespace cli
