@@ -1,4 +1,4 @@
-# Parser Project
+# CPParser
 
 A modern C++ (C++23) parser implementation demonstrating compiler theory and practice. This project builds a complete parser from scratch, starting with a lexer and progressing through expression parsing, statement parsing, and program analysis.
 
@@ -25,7 +25,9 @@ A modern C++ (C++23) parser implementation demonstrating compiler theory and pra
 
 ```bash
 # Clone and navigate to project
-cd parser
+git clone https://github.com/Xitonight/CPParser
+
+cd CPParser
 
 # Create build directory
 mkdir build && cd build
@@ -35,14 +37,14 @@ cmake ..
 make -j$(nproc)
 
 # Run the lexer on a source file
-./parser --file path/to/source.txt
+./cpparser --file path/to/source.txt
 ```
 
 ### Build Options
 
 ```bash
 # Build only the main executable (faster)
-make parser
+make cpparser
 
 # Build tests
 make tests
@@ -93,22 +95,22 @@ Test files are in `tests/lexer_tests.cpp` - new tests are automatically discover
 
 ```
 parser/
-├── include/           # Header files
-│   ├── lexer.h       # Lexer class definition
-│   ├── token.h       # Token and TokenType definitions
-│   ├── cli.h         # Command-line interface
-│   └── file_utils.h # File I/O utilities
-├── src/              # Source files
-│   ├── lexer.cpp     # Lexer implementation
-│   ├── token.cpp     # Token utilities
-│   ├── cli.cpp       # CLI argument parsing
-│   ├── file_utils.cpp # File reading
-│   └── main.cpp     # Main entry point
-├── tests/            # Test suite
+    ├── include/        # Header files
+    │   ├── lexer.h     # Lexer class definition
+    │   ├── token.h     # Token and TokenType definitions
+│   ├── cli.h           # Command-line interface
+│   └── file_utils.h    # File I/O utilities
+├── src/                # Source files
+│   ├── lexer.cpp       # Lexer implementation
+│   ├── token.cpp       # Token utilities
+│   ├── cli.cpp         # CLI argument parsing
+│   ├── file_utils.cpp  # File reading
+│   └── main.cpp        # Main entry point
+├── tests/              # Test suite
 │   ├── lexer_tests.cpp
 │   └── README.md
-├── build/            # Build artifacts (generated)
-├── CMakeLists.txt    # CMake build configuration
+├── build/              # Build artifacts (generated)
+├── CMakeLists.txt      # CMake build configuration
 ```
 
 ## Usage
@@ -117,10 +119,10 @@ parser/
 
 ```bash
 # Lex a source file
-./parser --file example.txt
+./cpparser --file example.txt
 
 # View CLI help
-./parser --help
+./cpparser --help
 ```
 
 ### Example Input
