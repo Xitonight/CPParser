@@ -1,5 +1,5 @@
+#include "../include/lexer.h"
 #include <catch2/catch_test_macros.hpp>
-#include <lexer.h>
 
 using namespace lexer;
 
@@ -205,8 +205,6 @@ TEST_CASE("Lexer: Identifier - camelCase", "[lexer]") {
   REQUIRE(token.type() == TokenType::IDENTIFIER);
   REQUIRE(token.lexeme() == "camelCase");
 }
-
-
 
 TEST_CASE("Lexer: Keyword - if", "[lexer]") {
   Lexer lexer("if");

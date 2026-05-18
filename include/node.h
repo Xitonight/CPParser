@@ -1,7 +1,7 @@
 #pragma once
 
+#include "token.h"
 #include <memory>
-#include <token.h>
 
 namespace parser {
 
@@ -32,14 +32,11 @@ public:
 
 class NumberLiteralExpr : public Expr {
 public:
-  explicit NumberLiteralExpr(lexer::Token token)
-      : token_{std::move(token)} {}
+  explicit NumberLiteralExpr(lexer::Token token) : token_{std::move(token)} {}
 
   const lexer::Token &token() const { return token_; }
 
-  void accept(ExprVisitor &visitor) const override {
-    visitor.visit(*this);
-  }
+  void accept(ExprVisitor &visitor) const override { visitor.visit(*this); }
 
 private:
   lexer::Token token_;
@@ -47,14 +44,11 @@ private:
 
 class StringLiteralExpr : public Expr {
 public:
-  explicit StringLiteralExpr(lexer::Token token)
-      : token_{std::move(token)} {}
+  explicit StringLiteralExpr(lexer::Token token) : token_{std::move(token)} {}
 
   const lexer::Token &token() const { return token_; }
 
-  void accept(ExprVisitor &visitor) const override {
-    visitor.visit(*this);
-  }
+  void accept(ExprVisitor &visitor) const override { visitor.visit(*this); }
 
 private:
   lexer::Token token_;
@@ -62,14 +56,11 @@ private:
 
 class IdentifierExpr : public Expr {
 public:
-  explicit IdentifierExpr(lexer::Token token)
-      : token_{std::move(token)} {}
+  explicit IdentifierExpr(lexer::Token token) : token_{std::move(token)} {}
 
   const lexer::Token &token() const { return token_; }
 
-  void accept(ExprVisitor &visitor) const override {
-    visitor.visit(*this);
-  }
+  void accept(ExprVisitor &visitor) const override { visitor.visit(*this); }
 
 private:
   lexer::Token token_;
@@ -82,9 +73,7 @@ public:
 
   const Expr &expression() const { return *expression_; }
 
-  void accept(ExprVisitor &visitor) const override {
-    visitor.visit(*this);
-  }
+  void accept(ExprVisitor &visitor) const override { visitor.visit(*this); }
 
 private:
   std::unique_ptr<Expr> expression_;
@@ -98,9 +87,7 @@ public:
   const lexer::Token &op() const { return op_; }
   const Expr &right() const { return *right_; }
 
-  void accept(ExprVisitor &visitor) const override {
-    visitor.visit(*this);
-  }
+  void accept(ExprVisitor &visitor) const override { visitor.visit(*this); }
 
 private:
   lexer::Token op_;
@@ -111,16 +98,13 @@ class BinaryExpr : public Expr {
 public:
   BinaryExpr(std::unique_ptr<Expr> left, lexer::Token op,
              std::unique_ptr<Expr> right)
-      : left_{std::move(left)}, op_{std::move(op)},
-        right_{std::move(right)} {}
+      : left_{std::move(left)}, op_{std::move(op)}, right_{std::move(right)} {}
 
   const Expr &left() const { return *left_; }
   const lexer::Token &op() const { return op_; }
   const Expr &right() const { return *right_; }
 
-  void accept(ExprVisitor &visitor) const override {
-    visitor.visit(*this);
-  }
+  void accept(ExprVisitor &visitor) const override { visitor.visit(*this); }
 
 private:
   std::unique_ptr<Expr> left_;

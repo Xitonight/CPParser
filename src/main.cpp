@@ -1,5 +1,5 @@
-#include <cli.h>
-#include <lexer.h>
+#include "../include/cli.h"
+#include "../include/lexer.h"
 
 int main(int argc, char *argv[]) {
   cli::CliHelper cliHelper{argc, argv};

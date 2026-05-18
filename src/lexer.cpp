@@ -1,7 +1,7 @@
-#include <cli.h>
+#include "../include/lexer.h"
+#include "../include/cli.h"
 #include <cstddef>
 #include <iostream>
-#include <lexer.h>
 #include <string>
 #include <vector>
 

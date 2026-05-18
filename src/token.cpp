@@ -1,7 +1,7 @@
+#include "../include/token.h"
 #include <iomanip>
 #include <ios>
 #include <ostream>
-#include <token.h>
 #include <unordered_map>
 
 namespace lexer {

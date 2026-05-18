@@ -1,6 +1,6 @@
-#include <cli.h>
+#include "../include/parser.h"
+#include "../include/cli.h"
 #include <iostream>
-#include <parser.h>
 
 namespace parser {
 

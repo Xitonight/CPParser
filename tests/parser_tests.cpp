@@ -1,7 +1,7 @@
-#include <ast_printer.h>
+#include "../include/ast_printer.h"
+#include "../include/lexer.h"
+#include "../include/parser.h"
 #include <catch2/catch_test_macros.hpp>
-#include <lexer.h>
-#include <parser.h>
 
 namespace parser {
 namespace {
@@ -61,8 +61,7 @@ TEST_CASE("Parser: grouping overrides precedence", "[Parser]") {
 }
 
 TEST_CASE("Parser: complex expression", "[Parser]") {
-  REQUIRE(parseAndPrint("1 + 2 * 3 - 4 / 2") ==
-          "(- (+ 1 (* 2 3)) (/ 4 2))");
+  REQUIRE(parseAndPrint("1 + 2 * 3 - 4 / 2") == "(- (+ 1 (* 2 3)) (/ 4 2))");
 }
 
 TEST_CASE("Parser: nested grouping", "[Parser]") {

@@ -1,10 +1,10 @@
 #pragma once
 
+#include "node.h"
+#include "token.h"
 #include <memory>
-#include <node.h>
 #include <stdexcept>
 #include <string>
-#include <token.h>
 #include <vector>
 
 namespace parser {

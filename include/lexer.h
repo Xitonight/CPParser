@@ -1,6 +1,6 @@
+#include "token.h"
 #include <cstddef>
 #include <string>
-#include <token.h>
 #include <vector>
 
 namespace lexer {
